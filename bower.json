@@ -1,0 +1,24 @@
+{
+  "name": "struct",
+  "description": "A library of various data structures.",
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Matt Andre",
+      "email": "mandre112@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "almond": "latest"
+  },
+  "devDependencies": {
+    "sinon": "latest"
+  },
+  "ignore": [
+    "**/.*",
+    "dist",
+    "spec",
+    "Gruntfile.js",
+    "bower.json"
+  ]
+}
