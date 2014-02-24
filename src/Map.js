@@ -102,7 +102,7 @@ define([ './ArrayList', './Utils' ], function(ArrayList, Utils) {
 		return this.length;
 	};
 
-	Map.prototype.values = function() {
+	Map.prototype.values = Map.prototype.toArray = function() {
 		var list = new ArrayList(), key;
 		for (key in this.data) {
 			if (this.data.hasOwnProperty(key)) {

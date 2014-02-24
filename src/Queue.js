@@ -1,5 +1,5 @@
 define([ './Utils' ], function(Utils) {
-  var Queue = function() {
+	var Queue = function() {
 		this.clear();
 	};
 
@@ -16,11 +16,13 @@ define([ './Utils' ], function(Utils) {
 			this.tail.next = node;
 			this.tail = node;
 		}
+		this.size++;
 	};
 
 	Queue.prototype.clear = function() {
 		this.head = null;
 		this.tail = null;
+		this.size = 0;
 	};
 
 	Queue.prototype.contains = function(element) {
@@ -55,14 +57,15 @@ define([ './Utils' ], function(Utils) {
 		}else {
 			this.head = this.head.next;
 		}
+		this.size--;
 		return element;
 	};
 
-	Queue.prototype.removeFirst = function(element) {
+	Queue.prototype.remove = function(element) {
 		if (this.isEmpty()) {
 			return false;
 		}
-		var last = null, current = this.head.next, next = current.next;
+		var last = null, current = this.head, next = current.next;
 		while (current !== null) {
 			if (Utils.compareElements(element, current.data)) {
 				if (last === null && next === null) { //current is the only element in queue
@@ -75,42 +78,28 @@ define([ './Utils' ], function(Utils) {
 				}else { // current is somewhere in middle of queue
 					last.next = next;
 				}
+				this.size--;
 				return true;
+			}else {
+				last = current;
+				current = current.next;
+				next = current ? current.next : null;
 			}
-			last = current;
-			current = current.next;
-			next = current ? current.next : null;
 		}
 		return false;
 	};
 
-	Queue.prototype.removeAll = function(element) {
-		if (this.isEmpty()) {
-			return false;
-		}
+	Queue.prototype.size = function() {
+		return this.size;
+	};
 
-		var changed = false, last, current;
-
-		if (Utils.compareElements(element, this.head.data)) {
-			this.head = this.head.next;
-			changed = true;
-		}
-
-		last = this.head;
-		current = last.next;
+	Queue.prototype.toArray = function() {
+		var values = [], current = this.head;
 		while (current !== null) {
-			if (Utils.compareElements(element, current.data)) {
-				last.next = current.next;
-				if (last.next === null) {
-					this.tail = last;
-				}
-				changed = true;
-			}
-			last = current;
-			current = last.next;
+			values.push(current.data);
+			current = current.next;
 		}
-
-		return changed;
+		return values;
 	};
   return Queue;
 });

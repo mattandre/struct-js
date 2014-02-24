@@ -1,4 +1,4 @@
-define([ './ArrayList', './Set', './Map' ], function(ArrayList, Set, Map) {
+define([ ], function() {
   var Utils = {};
 
   Utils.UID_PROPERTY = '_uid_' + (Math.random() * 10e9);
@@ -10,9 +10,9 @@ define([ './ArrayList', './Set', './Map' ], function(ArrayList, Set, Map) {
   };
 
   Utils.getArray = function(collection) {
-    if (collection instanceof ArrayList || collection instanceof Set) {
+    if (typeof collection.toArray === 'function'){
       return collection.toArray();
-    }else if (collection instanceof Map) {
+    }else if (typeof collection.values === 'function') {
       return collection.values();
     }
     return collection;

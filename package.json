@@ -9,11 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:mattandre/struct.git"
+    "url": "git@github.com:mattandre/structjs.git"
   },
   "bugs": {
-    "url": "https://github.com/mattandre/struct/issues"
+    "url": "https://github.com/mattandre/structjs/issues"
   },
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/mattandre/structjs/blob/master/LICENSE.txt"
+		}
+	],
   "main": "dist/struct.js",
   "dependencies": {},
   "devDependencies": {

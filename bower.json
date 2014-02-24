@@ -2,6 +2,8 @@
   "name": "struct",
   "description": "A library of various data structures.",
   "version": "0.0.1",
+  "main": "dist/struct.js",
+  "license": "MIT",
   "authors": [
     {
       "name": "Matt Andre",
