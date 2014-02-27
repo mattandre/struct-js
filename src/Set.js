@@ -127,6 +127,10 @@ define([ './Map', './Utils' ], function(Map, Utils) {
 		return this.map.values().toArray();
 	};
 
+	Set.prototype.toString = function() {
+		return '[' + this.map.values().toArray() + ']';
+	};
+
 	Set.prototype.union = function(collection) {
 		var set = this.clone();
 		set.addAll(collection);
